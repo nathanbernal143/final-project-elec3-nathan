@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather App</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="app">
+		<header class="app__header">
+			<div>
+				<p class="eyebrow">OpenWeather powered</p>
+				<h1>Local Forecast</h1>
+			</div>
+			<button id="themeToggle" class="toggle" aria-label="Toggle dark mode">
+				<span class="toggle__thumb"></span>
+				<span class="toggle__label">Dark mode</span>
+			</button>
+		</header>
+
+		<form id="searchForm" class="search" aria-label="Search city">
+			<input id="cityInput" name="city" type="text" placeholder="Search city (e.g., London)" autocomplete="off" required>
+			<button type="submit">Search</button>
+		</form>
+		<p id="status" class="status" role="status"></p>
+
+		<section id="current" class="panel" aria-live="polite"></section>
+
+		<section class="panel">
+			<div class="panel__header">
+				<h2>5 Day Forecast</h2>
+				<p class="note">Midday snapshots</p>
+			</div>
+			<div id="forecast" class="forecast" aria-live="polite"></div>
+		</section>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <main class="page">
+            <header class="hero">
+                <div>
+                    <h1>Stopwatch</h1>
+                </div>
+                <div class="badge">S</div>
+            </header>
+
+            <section class="grid single">
+                <div class="card stopwatch" aria-label="stopwatch">
+                    <div class="status-row">
+                        <span class="status-dot" id="statusDot"></span>
+                        <span class="status-text" id="statusText">Idle</span>
+                </div>
+
+                <div class="time-display" aria-live="polite">
+                    <span class="time-part" id="hours">00</span>
+                    <span class="separator">:</span>
+                    <span class="time-part" id="minutes">00</span>
+                    <span class="separator">:</span>
+                    <span class="time-part" id="seconds">00</span>
+                    <span class="separator">:</span>
+                    <span class="time-part milliseconds" id="milliseconds">00</span>
+                </div>
+
+                    <div class="controls">
+                        <button class="pill ghost" data-action="reset" id="resetBtn">Reset</button>
+                        <button class="pill primary" data-action="toggle"><span id="toggleLabel">Start</span></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    <script src="script.js"></script>
+</body>
+</html>
