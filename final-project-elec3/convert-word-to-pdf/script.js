@@ -1,13 +1,13 @@
 const ENDPOINT = "https://v2.convertapi.com/convert/docx/to/pdf";
+const SAMPLE_URL = "https://file-examples.com/storage/fe1dc762ed0a3230b948e57843b4374e/file-example_DOCX_1.docx";
 
 const form = document.getElementById("convertForm");
 const authInput = document.getElementById("auth");
 const fileInput = document.getElementById("file");
-const chooseBtn = document.getElementById("chooseBtn");
-const fileName = document.getElementById("fileName");
 const statusEl = document.getElementById("status");
 const resultEl = document.getElementById("result");
 const downloadLink = document.getElementById("downloadLink");
+const sampleBtn = document.getElementById("sampleBtn");
 const themeToggle = document.getElementById("themeToggle");
 
 restoreAuth();
@@ -34,11 +34,21 @@ function wireEvents() {
 		convertFile(file, auth);
 	});
 
-	chooseBtn?.addEventListener("click", () => {
-		fileInput.click();
-	});
-	fileInput.addEventListener("change", () => {
-		fileName.textContent = fileInput.files[0] ? fileInput.files[0].name : "";
+	sampleBtn.addEventListener("click", async () => {
+		setStatus("Fetching sample DOCX...");
+		try {
+			const res = await fetch(SAMPLE_URL);
+			if (!res.ok) throw new Error("Could not fetch sample file.");
+			const blob = await res.blob();
+			const file = new File([blob], "sample.docx", { type: blob.type || "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+			const dt = new DataTransfer();
+			dt.items.add(file);
+			fileInput.files = dt.files;
+			setStatus("Sample file loaded. Click convert.");
+		} catch (err) {
+			console.error(err);
+			setStatus(err.message || "Failed to load sample file.", true);
+		}
 	});
 
 	themeToggle?.addEventListener("click", () => {
