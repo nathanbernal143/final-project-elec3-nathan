@@ -143,6 +143,6 @@ function prefillCityFromURL() {
 	const params = new URLSearchParams(window.location.search);
 	const cityParam = params.get("city") || "";
 	if (cityParam) input.value = cityParam;
-	const initialCity = cityParam || "London";
+	const initialCity = cityParam || "Lingayen, Pangasinan";
 	fetchWeather(initialCity);
 }

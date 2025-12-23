@@ -92,8 +92,9 @@ function resetTimer() {
 }
 
 function handleClick(event) {
-    const action = event.target.dataset.action;
-    if (!action) return;
+    const button = event.target.closest('[data-action]');
+    if (!button) return;
+    const action = button.dataset.action;
     if (action === 'toggle') toggleRun();
     if (action === 'reset') resetTimer();
 }
